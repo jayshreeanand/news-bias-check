@@ -2,25 +2,25 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { dforms as canister } from "../../declarations/dforms";
 
-import { dforms } from "../../declarations/dforms";
+// import { dforms } from "../../declarations/dforms";
 
-document.querySelector("form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const button = e.target.querySelector("button");
+// document.querySelector("form").addEventListener("submit", async (e) => {
+//   e.preventDefault();
+//   const button = e.target.querySelector("button");
 
-  const name = document.getElementById("name").value.toString();
+//   const name = document.getElementById("name").value.toString();
 
-  button.setAttribute("disabled", true);
+//   button.setAttribute("disabled", true);
 
-  // Interact with foo actor, calling the greet method
-  const greeting = await dforms.greet(name);
+//   // Interact with foo actor, calling the greet method
+//   const greeting = await dforms.greet(name);
 
-  button.removeAttribute("disabled");
+//   button.removeAttribute("disabled");
 
-  document.getElementById("greeting").innerText = greeting;
+//   document.getElementById("greeting").innerText = greeting;
 
-  return false;
-});
+//   return false;
+// });
 
 
 
@@ -61,9 +61,11 @@ class PhoneBook extends React.Component {
         <div>
           Insert or update a new phone book entry:
           <table>
-            <tr style="color:blue"><td>Name:</td><td><input required id="newEntryName"></input></td></tr>
-            <tr><td>Description:</td><td><input id="newEntryDesc"></input></td></tr>
-            <tr><td>Phone:</td><td><input required id="newEntryPhone" type="tel" pattern="[0-9]{10}"></input></td></tr>
+            <tbody>
+              <tr><td>Name:</td><td><input required id="newEntryName"></input></td></tr>
+              <tr><td>Description:</td><td><input id="newEntryDesc"></input></td></tr>
+              <tr><td>Phone:</td><td><input required id="newEntryPhone" type="tel" pattern="[0-9]{10}"></input></td></tr>
+            </tbody>
           </table>
           <button onClick={() => this.doInsert()}>Insert or Update</button>
         </div>
