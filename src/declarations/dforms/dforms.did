@@ -1,4 +1,11 @@
 type Phone = text;
+type NewsSource = 
+ record {
+   accuracy: text;
+   bias: text;
+   domain: text;
+   source: text;
+ };
 type Name = text;
 type Entry = 
  record {
@@ -7,6 +14,8 @@ type Entry =
  };
 service : {
   greet: (text) -> (text);
-  insert: (Name, Entry) -> ();
-  lookup: (Name) -> (opt Entry) query;
+  insert: (text, text, text, text) -> ();
+  insertOld: (Name, Entry) -> ();
+  lookup: (text) -> (opt NewsSource) query;
+  lookupOld: (Name) -> (opt Entry) query;
 }
