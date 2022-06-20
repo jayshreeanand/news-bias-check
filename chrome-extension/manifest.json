@@ -1,0 +1,58 @@
+{
+  "manifest_version": 2,
+  "name": "IC Bias Check",
+  "version": "1.0",
+  
+
+  "description": "Chrome extension that uses news media ratings hosted on  Internet Computer application to check for bias in the news and also displays articles with similar and differing view points. Works on Twitter, Facebook, Google and Reddit",
+
+  "icons": {
+    "48": "icons/bias-check-48.png",
+    "96": "icons/bias-check-96.png",
+    "128": "icons/bias-check-128.png"
+  },
+
+  "browser_action": {
+    "default_icon": "icons/bias-check-38.png",
+    "default_popup": "options.html"
+  },
+
+  "web_accessible_resources": [
+    "sources/sources.json"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.reddit.com/*"],
+      "js": ["bias-check-r.js"]
+    },
+    { 
+      "matches": ["*://*.facebook.com/*"],
+      "js": ["bias-check-fb.js"]
+    },
+    {
+      "matches": ["*://*.google.com/*"],
+      "js": ["bias-check-g.js"]
+    },
+    {
+      "matches": ["*://*.twitter.com/*"],
+      "js": ["bias-check-tw.js"]
+    },
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "exclude_matches": ["*://*.reddit.com/*", "*://*.facebook.com/*", "*://*.google.com/*", "*://*.twitter.com/*"],
+      "js": ["bias-check-other.js"]
+    }
+  ],
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false    
+  },
+
+  "options_ui": {
+    "page": "options.html"
+  },
+
+  "permissions": ["storage", "http://127.0.0.1:5000/"]
+}
