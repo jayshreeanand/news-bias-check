@@ -3,6 +3,8 @@ import { render } from 'react-dom';
 import { dforms as canister } from "../../declarations/dforms";
 
 import { dforms } from "../../declarations/dforms";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
 
 // document.querySelector("form").addEventListener("submit", async (e) => {
 //   e.preventDefault();
@@ -73,6 +75,7 @@ class NewsSources extends React.Component {
 
             </tbody>
           </table>
+          <Button  onClick={() => this.doInsert()} variant="primary">Button #1</Button>
           <button onClick={() => this.doInsert()}>Insert or Update</button>
         </div>
         <div>
