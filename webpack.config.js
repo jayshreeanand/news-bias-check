@@ -81,6 +81,12 @@ module.exports = {
   //    { test: /\.css$/, use: ['style-loader','css-loader'] }
   //  ]
   // },
+  module: {
+    rules: [
+      { test: /\.(ts|tsx|jsx)$/, loader: "ts-loader" },
+      { test: /\.css$/, use: ['style-loader','css-loader'] }
+    ]
+   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, asset_entry),

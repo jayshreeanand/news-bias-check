@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import { dforms as canister } from '../../declarations'
+import { dforms as canister } from "../../declarations/dforms";
 
 class PhoneBook extends React.Component {
 
