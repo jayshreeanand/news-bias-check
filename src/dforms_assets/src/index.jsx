@@ -4,27 +4,27 @@ import { dforms as canister } from "../../declarations/dforms";
 
 import { dforms } from "../../declarations/dforms";
 
-document.querySelector("form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const button = e.target.querySelector("button");
+// document.querySelector("form").addEventListener("submit", async (e) => {
+//   e.preventDefault();
+//   const button = e.target.querySelector("button");
 
-  const name = document.getElementById("name").value.toString();
+//   const domain = document.getElementById("domain").value.toString();
 
-  button.setAttribute("disabled", true);
+//   button.setAttribute("disabled", true);
 
-  // Interact with foo actor, calling the greet method
-  const greeting = await dforms.greet(name);
+//   // Interact with foo actor, calling the greet method
+//   const greeting = await dforms.greet(domain);
 
-  button.removeAttribute("disabled");
+//   button.removeAttribute("disabled");
 
-  document.getElementById("greeting").innerText = greeting;
+//   document.getElementById("greeting").innerText = greeting;
 
-  return false;
-});
+//   return false;
+// });
 
 
 
-class PhoneBook extends React.Component {
+class NewsSources extends React.Component {
 
   constructor(props) {
     super(props);
@@ -32,45 +32,51 @@ class PhoneBook extends React.Component {
   }
 
   async doInsert() {
-    let name = document.getElementById("newEntryName").value;
-    let desc = document.getElementById("newEntryDesc").value;
-    let phone = document.getElementById("newEntryPhone").value;
-    canister.insert(name, { desc, phone });
+    let domain = document.getElementById("newEntryDomain").value;
+    let bias = document.getElementById("newEntryBias").value;
+    let accuracy = document.getElementById("newEntryAccuracy").value;
+    let source = document.getElementById("newEntrySource").value;
+    canister.insert(domain, bias, accuracy, source);
   }
 
   async lookup() {
-    let name = document.getElementById("lookupName").value;
-    canister.lookup(name).then(opt_entry => {
+    let domain = document.getElementById("lookupDomain").value;
+    canister.lookup(domain).then(opt_entry => {
       let entry = opt_entry.length > 0 ? opt_entry[0] : null;
       if (entry === null || entry === undefined) {
         entry = {
-          desc: "",
-          phone: "",
+          bias: "",
+          accuracy: "",
+          source: "",
         };
       }
-      document.getElementById("newEntryName").value = name;
-      document.getElementById("newEntryDesc").value = entry.desc;
-      document.getElementById("newEntryPhone").value = entry.phone;
+      document.getElementById("newEntryDomain").value = domain;
+      document.getElementById("newEntryBias").value = entry.bias;
+      document.getElementById("newEntryAccuracy").value = entry.accuracy;
+      document.getElementById("newEntrySource").value = entry.source;
+
     });
   }
 
   render() {
     return (
       <div>
-        <h1>Phone Book</h1>
+        <h1>News Source Bias Check</h1>
         <div>
-          Insert or update a new phone book entry:
+          Insert or update a new news agency bias/accuracy entry:
           <table>
             <tbody>
-              <tr><td>Name:</td><td><input required id="newEntryName"></input></td></tr>
-              <tr><td>Description:</td><td><input id="newEntryDesc"></input></td></tr>
-              <tr><td>Phone:</td><td><input required id="newEntryPhone" type="tel" pattern="[0-9]{10}"></input></td></tr>
+              <tr><td>Domain:</td><td><input required id="newEntryDomain"></input></td></tr>
+              <tr><td>Bias:</td><td><input required id="newEntryBias"></input></td></tr>
+              <tr><td>Accuracy:</td><td><input required id="newEntryAccuracy" type="tel" ></input></td></tr>
+              <tr><td>Source Link:</td><td><input  id="newEntrySource" ></input></td></tr>
+
             </tbody>
           </table>
           <button onClick={() => this.doInsert()}>Insert or Update</button>
         </div>
         <div>
-          Lookup Name: <input id="lookupName"></input> <button onClick={
+          Lookup News Source: <input id="lookupDomain"></input> <button onClick={
             () => this.lookup()
           }>Lookup</button>
         </div>
@@ -79,4 +85,4 @@ class PhoneBook extends React.Component {
   }
 }
 
-render(<PhoneBook />, document.getElementById('app'));
+render(<NewsSources />, document.getElementById('app'));
