@@ -23,7 +23,7 @@ actor {
 
   let NewsSources = Map.HashMap<Domain, NewsSource>(0, Text.equal, Text.hash);
 
-  public func insert(domain : Text, bias: Text, accuracy: Text, source: Text): async () {
+  public query func insert(domain : Text, bias: Text, accuracy: Text, source: Text): async () {
     let newsSource : NewsSource = {
       bias = bias;
       accuracy = accuracy;
@@ -37,21 +37,9 @@ actor {
     NewsSources.get(domain)
   };
 
-  public query func getNewsSources() : async List.List<(Domain, NewsSource)> {
-    Iter.toList(NewsSources.entries())
+  public query func getNewsSources() : async [(Domain, NewsSource)] {
+    Iter.toArray<(Domain, NewsSource)>(NewsSources.entries());
   };
-
-  let phonebook = Map.HashMap<Name, Entry>(0, Text.equal, Text.hash);
-
-  public func insertOld(name : Name, entry : Entry): async () {
-    phonebook.put(name, entry);
-  };
-
-  public query func lookupOld(name : Name) : async ?Entry {
-    phonebook.get(name)
-  };
-
-  public func greet(name : Text) : async Text {
-    return "Hello, " # name # "!";
-  };
+  
+  
 };

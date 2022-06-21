@@ -1,4 +1,3 @@
-type Phone = text;
 type NewsSource = 
  record {
    accuracy: text;
@@ -6,26 +5,12 @@ type NewsSource =
    domain: text;
    source: text;
  };
-type Name = text;
-type List = 
- opt record {
-       record {
-         Domain;
-         NewsSource;
-       };
-       List;
-     };
-type Entry = 
- record {
-   desc: text;
-   phone: Phone;
- };
 type Domain = text;
 service : {
-  getNewsSources: () -> (List) query;
-  greet: (text) -> (text);
-  insert: (text, text, text, text) -> ();
-  insertOld: (Name, Entry) -> ();
+  getNewsSources: () -> (vec record {
+                               Domain;
+                               NewsSource;
+                             }) query;
+  insert: (text, text, text, text) -> () query;
   lookup: (text) -> (opt NewsSource) query;
-  lookupOld: (Name) -> (opt Entry) query;
 }
