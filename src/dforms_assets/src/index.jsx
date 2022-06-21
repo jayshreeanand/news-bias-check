@@ -43,13 +43,13 @@ class NewsSources extends React.Component {
       if(results.length > 0) {
         results.forEach(function(value, index){
           console.log("value is")
-        console.log(value)
+        console.log(value[1])
        trval = trval + '<tr>';
 
-         trval = trval+'<td>'+ value[0][1]["domain"] +'</td>';
-         trval = trval+'<td>'+ value[0][1]["bias"] +'</td>';
-         trval = trval+'<td>'+ value[0][1]["accuracy"] +'</td>';
-         trval = trval+'<td>'+ value[0][1]["source"] +'</td>';
+         trval = trval+'<td>'+ value[1]["domain"] +'</td>';
+         trval = trval+'<td>'+ value[1]["bias"] +'</td>';
+         trval = trval+'<td>'+ value[1]["accuracy"] +'</td>';
+         trval = trval+'<td>'+ value[1]["source"] +'</td>';
         trval = trval+'</tr>';
 
         });

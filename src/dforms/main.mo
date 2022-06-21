@@ -23,7 +23,7 @@ actor {
 
   let NewsSources = Map.HashMap<Domain, NewsSource>(0, Text.equal, Text.hash);
 
-  public query func insert(domain : Text, bias: Text, accuracy: Text, source: Text): async () {
+  public func insert(domain : Text, bias: Text, accuracy: Text, source: Text): async () {
     let newsSource : NewsSource = {
       bias = bias;
       accuracy = accuracy;

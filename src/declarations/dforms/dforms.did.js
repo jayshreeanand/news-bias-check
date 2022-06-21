@@ -12,11 +12,7 @@ export const idlFactory = ({ IDL }) => {
         [IDL.Vec(IDL.Tuple(Domain, NewsSource))],
         ['query'],
       ),
-    'insert' : IDL.Func(
-        [IDL.Text, IDL.Text, IDL.Text, IDL.Text],
-        [],
-        ['query'],
-      ),
+    'insert' : IDL.Func([IDL.Text, IDL.Text, IDL.Text, IDL.Text], [], []),
     'lookup' : IDL.Func([IDL.Text], [IDL.Opt(NewsSource)], ['query']),
   });
 };

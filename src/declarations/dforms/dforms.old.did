@@ -11,6 +11,6 @@ service : {
                                Domain;
                                NewsSource;
                              }) query;
-  insert: (text, text, text, text) -> ();
+  insert: (text, text, text, text) -> () query;
   lookup: (text) -> (opt NewsSource) query;
 }
