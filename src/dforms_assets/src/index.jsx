@@ -5,6 +5,8 @@ import { dforms as canister } from "../../declarations/dforms";
 import { dforms } from "../../declarations/dforms";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
 
 // document.querySelector("form").addEventListener("submit", async (e) => {
 //   e.preventDefault();
@@ -62,28 +64,27 @@ class NewsSources extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>News Source Bias Check</h1>
+      <Container>
         <div>
-          Insert or update a new news agency bias/accuracy entry:
-          <table>
-            <tbody>
-              <tr><td>Domain:</td><td><input required id="newEntryDomain"></input></td></tr>
-              <tr><td>Bias:</td><td><input required id="newEntryBias"></input></td></tr>
-              <tr><td>Accuracy:</td><td><input required id="newEntryAccuracy" type="tel" ></input></td></tr>
-              <tr><td>Source Link:</td><td><input  id="newEntrySource" ></input></td></tr>
+          <h1>News Source Bias Check</h1>
+          <div class="mt-4">
+            Insert or update a new news agency bias/accuracy entry:
+            <table class="mt-4 mb-3">
+              <tbody>
+                <tr class="mt-2"><td>Domain:</td><td><input class="form-control" required id="newEntryDomain"></input></td></tr>
+                <tr class="mt-2"><td>Bias:</td><td><input class="form-control" required id="newEntryBias"></input></td></tr>
+                <tr class="mt-2"><td>Accuracy:</td><td><input class="form-control" required id="newEntryAccuracy" type="tel" ></input></td></tr>
+                <tr class="mt-2"><td>Source Link:</td><td><input  class="form-control" id="newEntrySource" ></input></td></tr>
 
-            </tbody>
-          </table>
-          <Button  onClick={() => this.doInsert()} variant="primary">Button #1</Button>
-          <button onClick={() => this.doInsert()}>Insert or Update</button>
+              </tbody>
+            </table>
+            <Button onClick={() => this.doInsert()} variant="primary">Insert or Update</Button>
+          </div>
+          <div class="lookup mt-4 " >
+            Lookup News Source: <input class=" mb-4 mt-4 col-sm-3 form-control" id="lookupDomain"></input> <Button class="mt-4" onClick={() => this.lookup()} variant="primary">Lookup</Button>
+          </div>
         </div>
-        <div>
-          Lookup News Source: <input id="lookupDomain"></input> <button onClick={
-            () => this.lookup()
-          }>Lookup</button>
-        </div>
-      </div>
+      </Container>
     );
   }
 }

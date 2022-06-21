@@ -3,9 +3,9 @@ body {
     font-size: 1.5rem;
 }
 
-img {
-    max-width: 50vw;
-    max-height: 25vw;
+.logo-img {
+    max-width: 10vw;
+    height: auto;
     display: block;
     margin: auto;
 }
@@ -15,23 +15,12 @@ form {
     justify-content: center;
     gap: 0.5em;
     flex-flow: row wrap;
-    max-width: 40vw;
+    max-width: 50vw;
     margin: auto;
     align-items: baseline;
 }
 
-button[type="submit"] {
-    padding: 5px 20px;
-    margin: 10px auto;
-    float: right;
-}
 
-#greeting {
-    margin: 10px auto;
-    padding: 10px 60px;
-    border: 1px solid #222;
-}
-
-#greeting:empty {
-    display: none;
+.lookup {
+    max-width: 50vw;
 }
