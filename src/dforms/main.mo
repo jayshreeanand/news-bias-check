@@ -1,5 +1,7 @@
 import Map "mo:base/HashMap";
 import Text "mo:base/Text";
+import List "mo:base/List";
+import Iter "mo:base/Iter";
 
 actor {
 
@@ -35,6 +37,9 @@ actor {
     NewsSources.get(domain)
   };
 
+  public query func getNewsSources() : async List.List<(Domain, NewsSource)> {
+    Iter.toList(NewsSources.entries())
+  };
 
   let phonebook = Map.HashMap<Name, Entry>(0, Text.equal, Text.hash);
 
