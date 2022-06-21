@@ -7,22 +7,12 @@ type NewsSource =
    source: text;
  };
 type Name = text;
-type List = 
- opt record {
-       record {
-         Domain;
-         NewsSource;
-       };
-       List;
-     };
 type Entry = 
  record {
    desc: text;
    phone: Phone;
  };
-type Domain = text;
 service : {
-  getNewsSources: () -> (List) query;
   greet: (text) -> (text);
   insert: (text, text, text, text) -> ();
   insertOld: (Name, Entry) -> ();

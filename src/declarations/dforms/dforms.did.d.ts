@@ -1,7 +1,9 @@
 import type { Principal } from '@dfinity/principal';
 import type { ActorMethod } from '@dfinity/agent';
 
+export type Domain = string;
 export interface Entry { 'desc' : string, 'phone' : Phone }
+export type List = [] | [[[Domain, NewsSource], List]];
 export type Name = string;
 export interface NewsSource {
   'domain' : string,
@@ -11,6 +13,7 @@ export interface NewsSource {
 }
 export type Phone = string;
 export interface _SERVICE {
+  'getNewsSources' : ActorMethod<[], List>,
   'greet' : ActorMethod<[string], string>,
   'insert' : ActorMethod<[string, string, string, string], undefined>,
   'insertOld' : ActorMethod<[Name, Entry], undefined>,

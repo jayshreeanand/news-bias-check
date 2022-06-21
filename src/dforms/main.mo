@@ -37,7 +37,7 @@ actor {
     NewsSources.get(domain)
   };
 
-  public query func getNewsSources() : async List.List<(Domain, NewsSource)> {
+  public query func getNewsSources() : async List.HashMap<(Domain, NewsSource)> {
     Iter.toList(NewsSources.entries())
   };
 

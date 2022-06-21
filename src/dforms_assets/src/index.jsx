@@ -35,6 +35,32 @@ class NewsSources extends React.Component {
     this.state = {};
   }
 
+  async fetchNewsSources() {
+    var newsSources = await canister.getNewsSources().then( results => {
+    console.log(results);
+    var trval = "";
+
+      if(results.length > 0) {
+        results.forEach(function(value, index){
+          console.log("value is")
+        console.log(value)
+       trval = trval + '<tr>';
+
+         trval = trval+'<td>'+ value[0][1]["domain"] +'</td>';
+         trval = trval+'<td>'+ value[0][1]["bias"] +'</td>';
+         trval = trval+'<td>'+ value[0][1]["accuracy"] +'</td>';
+         trval = trval+'<td>'+ value[0][1]["source"] +'</td>';
+        trval = trval+'</tr>';
+
+        });
+        console.log(trval);
+        let table = document.getElementById("newstable");
+        table.innerHTML = trval;
+      };
+    });
+
+  }
+
   async doInsert() {
     let domain = document.getElementById("newEntryDomain").value;
     let bias = document.getElementById("newEntryBias").value;
@@ -64,6 +90,7 @@ class NewsSources extends React.Component {
 
   render() {
     return (
+      <div>
       <Container>
         <div>
           <h1>News Source Bias Check</h1>
@@ -85,6 +112,27 @@ class NewsSources extends React.Component {
           </div>
         </div>
       </Container>
+      <Container class="mt-5">
+        {/* <h4 class="mt=5"> News Sources List </h4> */}
+        <div class="lookup mt-4 " >
+            Fetch recent news source entries:  <Button class="mt-4" onClick={() => this.fetchNewsSources()} variant="success">Go!</Button>
+          </div>
+      <table class="table table-striped mt-5 ">
+      <thead>
+        <tr>
+          <th scope="col">Domain</th>
+          <th scope="col">Bias</th>
+          <th scope="col">Accuracy</th>
+          <th scope="col">Source Link</th>
+        </tr>
+      </thead>
+      <tbody id="newstable">
+      
+       
+      </tbody>
+    </table>
+    </Container>
+    </div>
     );
   }
 }
