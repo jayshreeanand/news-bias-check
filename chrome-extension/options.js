@@ -134,11 +134,13 @@ const setSourceInfo = function(info){
 						// alert(JSON.stringify(news))
         } else {
             // Handle the error
-            alert("ERROR: status code " + req.status);
+            // alert("ERROR: status code " + req.status);
         }
     }
 });
-req.open("GET", "http://127.0.0.1:5000/api/v1/related_news?url=demo", true);
+
+// connect to IC canister running locally
+req.open("GET", "http://127.0.0.1:8000/related_news?url=demo", true);
 req.send(null);
 
 	if(info){
