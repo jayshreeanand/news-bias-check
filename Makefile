@@ -1,4 +1,4 @@
-NAME = dforms
+NAME = dnews
 
 .PHONY: all
 all: build
@@ -27,8 +27,8 @@ upgrade: build
 .PHONY: test
 .SILENT: test
 test: install
-	dfx canister call dforms insert '("Police", record { desc = "Call if you have an emergency."; phone = "911" })'
-	dfx canister call dforms lookup '("Police")' \
+	dfx canister call dnews insert '("Police", record { desc = "Call if you have an emergency."; phone = "911" })'
+	dfx canister call dnews lookup '("Police")' \
 		| grep '911' && echo 'PASS'
 	# This test needs to be rewritten for the new HTTP based architecture
 	# dfx canister call www retrieve '("index.js")' \

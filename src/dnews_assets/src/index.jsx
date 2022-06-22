@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import { dforms as canister } from "../../declarations/dforms";
+import { dnews as canister } from "../../declarations/dnews";
 
-import { dforms } from "../../declarations/dforms";
+import { dnews } from "../../declarations/dnews";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -17,7 +17,7 @@ import Form from 'react-bootstrap/Form';
 //   button.setAttribute("disabled", true);
 
 //   // Interact with foo actor, calling the greet method
-//   const greeting = await dforms.greet(domain);
+//   const greeting = await dnews.greet(domain);
 
 //   button.removeAttribute("disabled");
 

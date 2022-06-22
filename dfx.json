@@ -1,19 +1,19 @@
 {
   "canisters": {
-    "dforms": {
-      "main": "src/dforms/main.mo",
+    "dnews": {
+      "main": "src/dnews/main.mo",
       "type": "motoko"
     },
-    "dforms_assets": {
+    "dnews_assets": {
       "dependencies": [
-        "dforms"
+        "dnews"
       ],
       "frontend": {
-        "entrypoint": "src/dforms_assets/src/index.html"
+        "entrypoint": "src/dnews_assets/src/index.html"
       },
       "source": [
-        "src/dforms_assets/assets",
-        "dist/dforms_assets/"
+        "src/dnews_assets/assets",
+        "dist/dnews_assets/"
       ],
       "type": "assets"
     }

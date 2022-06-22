@@ -38,7 +38,7 @@ const canisterEnvVariables = initCanisterEnv();
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
-const frontendDirectory = "dforms_assets";
+const frontendDirectory = "dnews_assets";
 
 const asset_entry = path.join("src", frontendDirectory, "src", "index.html");
 
@@ -95,8 +95,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: path.join(__dirname, "src", "dforms_assets", "assets"),
-          to: path.join(__dirname, "dist", "dforms_assets"),
+          from: path.join(__dirname, "src", "dnews_assets", "assets"),
+          to: path.join(__dirname, "dist", "dnews_assets"),
         },
       ],
     }),
