@@ -1,0 +1,11 @@
+type Review = 
+ record {
+   businessId: text;
+   feedback: text;
+   rating: nat;
+   userId: text;
+ };
+service : {
+  getBusinessReviews: () -> (vec Review) query;
+  insert: (text, nat, text, text) -> (vec Review);
+}
